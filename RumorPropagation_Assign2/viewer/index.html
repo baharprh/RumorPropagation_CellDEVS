@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rumor Propagation</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body { font-family: Arial; }
+    #time { font-size: 20px; margin-bottom: 10px; }
+    rect { stroke: #ccc; }
+  </style>
+</head>
+<body>
+
+<h2>Rumor Propagation</h2>
+<div id="time">Time: 0</div>
+<svg id="grid"></svg>
+
+<script>
+const width = 30;
+const height = 30;
+const cellSize = 18;
+
+const colors = {
+  0: "yellow",   // ignorant
+  1: "blue",     // spreader
+  2: "red",      // stifler
+  3: "black"
+};
+
+const svg = d3.select("#grid")
+  .attr("width", width * cellSize)
+  .attr("height", height * cellSize);
+
+const timeLabel = d3.select("#time");
+
+// create grid
+let cells = [];
+for (let y = 0; y < height; y++) {
+  for (let x = 0; x < width; x++) {
+    cells.push({x, y});
+  }
+}
+
+svg.selectAll("rect")
+  .data(cells)
+  .enter()
+  .append("rect")
+  .attr("x", d => d.x * cellSize)
+  .attr("y", d => (height - 1 - d.y) * cellSize)
+  .attr("width", cellSize)
+  .attr("height", cellSize)
+  .attr("fill", "yellow");
+
+// load data
+d3.csv("data.csv").then(data => {
+  data.forEach(d => {
+    d.time = +d.time;
+    d.x = +d.x;
+    d.y = +d.y;
+    d.state = +d.state;
+  });
+
+  const grouped = d3.group(data, d => d.time);
+  const times = Array.from(grouped.keys()).sort((a,b) => a-b);
+
+  let t = 0;
+
+  function update() {
+    const frame = grouped.get(times[t]);
+
+    const map = new Map();
+    frame.forEach(d => {
+      map.set(`${d.x},${d.y}`, d.state);
+    });
+
+    svg.selectAll("rect")
+      .attr("fill", d => {
+        const key = `${d.x},${d.y}`;
+        return colors[map.get(key) ?? 0];
+      });
+
+    timeLabel.text("Time: " + times[t]);
+
+    t = (t + 1) % times.length;
+  }
+
+  update();
+  setInterval(update, 300);
+});
+</script>
+
+</body>
+</html>
