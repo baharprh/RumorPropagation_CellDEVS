@@ -7,13 +7,16 @@
 template <typename T>
 class rumor_coupled : public cadmium::celldevs::grid_coupled<T, int, int> {
 public:
-    explicit rumor_coupled(std::string const &id) : grid_coupled<T, int, int>(id) {}
+    using base_type = cadmium::celldevs::grid_coupled<T, int, int>;
+    using cell_map_type = typename cadmium::celldevs::cell_map<int, int>;
+
+    explicit rumor_coupled(const std::string& id) : base_type(id) {}
 
     void add_grid_cell_json(
-        std::string const &cell_type,
-        cell_map<int, int> &map,
-        std::string const &delay_id,
-        cadmium::json const &config
+        const std::string& cell_type,
+        cell_map_type& map,
+        const std::string& delay_id,
+        const cadmium::json& config
     ) override {
         if (cell_type == "rumor") {
             int conf = config.get<int>();
