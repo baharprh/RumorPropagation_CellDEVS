@@ -20,7 +20,7 @@ public:
     ) override {
         if (cell_type == "rumor") {
             int conf = config.get<int>();
-            this->template add_cell<rumor_cell>(map, delay_id, conf);
+            this->template add_cell<rumorCell>(map, delay_id, conf);
         } else {
             throw std::bad_typeid();
         }
