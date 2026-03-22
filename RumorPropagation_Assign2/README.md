@@ -1,7 +1,7 @@
-# Rumor Propagation using Cell-DEVS (Cadmium)
+# Rumor Propagation using Cell-DEVS (Cadmium) - Assignment 2
 
 ## Overview
-This project implements a rumor propagation model using the Cell-DEVS formalism in the Cadmium simulation framework. The system models how a rumor spreads across a 2D grid based on local interactions between neighboring cells.
+This is Assignment 2 of the Rumor Propagation project. It implements a rumor propagation model using the Cell-DEVS formalism in the Cadmium simulation framework. The system models how a rumor spreads across a 2D grid based on local interactions between neighboring cells.
 
 ## Project Structure
 - `src/` : C++ source files for the Cell-DEVS model
@@ -10,7 +10,7 @@ This project implements a rumor propagation model using the Cell-DEVS formalism 
 - `logs/` : simulation output files
 - `viewer/` : web-based visualization (D3.js)
 - `report/` : final report document
-- `rumor_simulation.mp4` : recorded simulation video
+- `bin/` : compiled executables
 
 ## Main Files
 - `src/main.cpp` : simulation entry point
@@ -18,61 +18,88 @@ This project implements a rumor propagation model using the Cell-DEVS formalism 
 - `src/rumor_coupled.hpp` : coupled grid model
 - `model/rumor_config.json` : simulation configuration
 - `viewer/index.html` : visualization interface
-- `viewer/data.csv` : processed simulation data
+- `bin/rumor_sim` : compiled simulation executable
+
+---
+
+## Requirements
+- C++ compiler (C++17 or later)
+- CMake 3.16+
+- Python 3
+- Web browser
+- Cadmium library (CADMIUM environment variable must be set)
+
+---
+
+## How to Build
+
+```bash
+# From the Assign2 directory
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+
+The executable will be created at: `./bin/rumor_sim`
 
 ---
 
 ## How to Run
 
-### 1. Build the project
-mkdir build
-cd build
-cmake ..
-cmake --build .
+```bash
+./bin/rumor_sim ./model/rumor_config.json [MAX_TIME]
+```
 
-### 2. Run the simulation
-./main
+Example:
+```bash
+./bin/rumor_sim ./model/rumor_config.json 50
+```
 
-This will generate output logs in the `logs/` folder.
-
----
-
-### 3. Generate visualization data
-python scripts/convert_state_to_csv.py
-
-This creates:
-viewer/data.csv
+This will generate output logs in the `logs/` folder:
+- `output_messages.txt` : detailed simulation messages
+- `state.txt` : cell states over time
 
 ---
 
-### 4. Run the web viewer
+## Configuration
 
-cd viewer
-python -m http.server 8000
-
-Open in browser:
-http://localhost:8000/viewer/index.html
+The `model/rumor_config.json` file controls the simulation parameters:
+- `scenario.shape` : grid dimensions [rows, cols]
+- `scenario.wrapped` : whether grid wraps at edges (true/false)
+- `cells.default` : default cell configuration
+- `cells.infected` : infected/seed cells initial positions
 
 ---
 
 ## Output
 
-- Grid-based visualization of rumor spread over time
-- Color-coded states:
-  - Yellow: uninformed
-  - Blue: informed
-  - Red: active rumor spreaders
+Simulation generates two output files in `logs/`:
+- **output_messages.txt** : timestamped messages and state transitions
+- **state.txt** : complete state snapshots at each time step
+
+Cell states:
+- `0` : uninformed (no rumor)
+- `1` : informed/infected (has rumor)
+
+---
+
+## Visualization
+
+View simulation results in a web browser:
+```bash
+cd viewer
+python3 -m http.server 8000
+```
+
+Then open: `http://localhost:8000/index.html`
+
+Pre-generated visualization data is available in `viewer/data.csv`
 
 ---
 
 ## Notes
-- The simulation is based on local interactions between neighboring cells.
-- Different initial conditions can be tested by modifying `rumor_config.json`.
-
----
-
-## Requirements
-- C++ compiler
-- CMake
-- Python 3
-- Web browser
+- The simulation uses Moore neighborhood (8-connected cells)
+- Rumor propagation is based on local interactions between neighboring cells
+- Different initial conditions can be tested by modifying `model/rumor_config.json`
+- Maximum simulation time can be specified as a command-line argument (default: 50)

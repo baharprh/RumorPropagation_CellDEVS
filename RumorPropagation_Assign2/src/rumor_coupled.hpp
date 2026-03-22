@@ -1,30 +1,27 @@
 #ifndef CADMIUM_CELLDEVS_RUMOR_COUPLED_HPP
 #define CADMIUM_CELLDEVS_RUMOR_COUPLED_HPP
 
-#include <cadmium/celldevs/coupled/grid_coupled.hpp>
+#include <memory>
+#include <string>
+
+#include <cadmium/modeling/celldevs/grid/coupled.hpp>
 #include "rumorCell.hpp"
 
-template <typename T>
-class rumor_coupled : public cadmium::celldevs::grid_coupled<T, int, int> {
+using namespace cadmium::celldevs;
+
+template<typename S, typename V>
+std::shared_ptr<GridCell<S, V>> rumorCellFactory(
+    const coordinates& cellId,
+    const std::shared_ptr<const GridCellConfig<S, V>>& config
+) {
+    return std::make_shared<rumorCell<S, V>>(cellId, config);
+}
+
+template<typename S, typename V>
+class rumor_coupled : public GridCellDEVSCoupled<S, V> {
 public:
-    using base_type = cadmium::celldevs::grid_coupled<T, int, int>;
-    using cell_map_type = typename cadmium::celldevs::cell_map<int, int>;
-
-    explicit rumor_coupled(const std::string& id) : base_type(id) {}
-
-    void add_grid_cell_json(
-        const std::string& cell_type,
-        cell_map_type& map,
-        const std::string& delay_id,
-        const cadmium::json& config
-    ) override {
-        if (cell_type == "rumor") {
-            int conf = config.get<int>();
-            this->template add_cell<rumorCell>(map, delay_id, conf);
-        } else {
-            throw std::bad_typeid();
-        }
-    }
+    rumor_coupled(const std::string& id, const std::string& config_file)
+        : GridCellDEVSCoupled<S, V>(id, &rumorCellFactory<S, V>, config_file) {}
 };
 
 #endif
