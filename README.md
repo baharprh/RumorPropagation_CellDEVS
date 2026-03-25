@@ -148,3 +148,9 @@ References
 Cadmium Simulation Framework
 Cell-DEVS Formalism
 devssim Viewer
+Final Checklist
+Code compiles
+Simulation runs
+Logs generated
+Visualization works
+README complete
