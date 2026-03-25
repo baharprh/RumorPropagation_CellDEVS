@@ -71,7 +71,7 @@ model/rumor_config.json
 
 controls the simulation.
 
-Key Parameters:
+Key Parameters
 scenario.shape → grid size
 scenario.wrapped → boundary condition
 cells.default → default cell behavior
@@ -81,10 +81,10 @@ Output
 After running simulation, output files are generated in:
 
 logs/
-Files:
+Files
 output_messages.txt → simulation messages
 state.txt → grid evolution
-Cell States:
+Cell States
 0 → uninformed
 1 → informed
 Data Processing
@@ -154,13 +154,3 @@ Simulation runs
 Logs generated
 Visualization works
 README complete
-
----
-
-# DONE
-
-Now:
-```bash
-git add README.md
-git commit -m "final clean README"
-git push
