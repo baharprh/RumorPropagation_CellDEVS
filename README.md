@@ -1,13 +1,13 @@
-# 📌 Rumor Propagation using Cell-DEVS (Cadmium)
+#  Rumor Propagation using Cell-DEVS (Cadmium)
 
-## 📖 Overview
+##  Overview
 This project implements a **rumor propagation model** using the **Cell-DEVS formalism** in the Cadmium simulation framework. The system models how a rumor spreads across a 2D grid based on local interactions between neighboring cells (Moore neighborhood).
 
 The objective is to simulate and analyze how information propagates spatially under different initial conditions and configurations.
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 
 RumorPropagation_CellDEVS/
@@ -26,7 +26,7 @@ RumorPropagation_CellDEVS/
 
 ---
 
-## ⚙️ Requirements
+##  Requirements
 
 - C++17 compatible compiler  
 - CMake ≥ 3.16  
@@ -36,13 +36,13 @@ RumorPropagation_CellDEVS/
 
 ---
 
-## 🔽 How to Clone
+##  How to Clone
 
 ```bash
 git clone https://github.com/baharprh/RumorPropagation_CellDEVS.git
 cd RumorPropagation_CellDEVS
 git submodule update --init --recursive
-🛠️ How to Build
+ How to Build
 Clean Build (Recommended)
 rm -rf build
 mkdir build
@@ -53,18 +53,18 @@ make
 Executable will be generated at:
 
 ./bin/rumor_sim
-▶️ How to Run
-🔵 Main Project
+ How to Run
+ Main Project
 cd build
 ../bin/rumor_sim ../model/rumor_config.json 50
-🟢 Assignment 2
+ Assignment 2
 cd RumorPropagation_Assign2
 mkdir -p build
 cd build
 cmake ..
 make
 ../bin/rumor_sim ../model/rumor_config.json 50
-⚙️ Configuration
+ Configuration
 
 The file:
 
@@ -88,20 +88,20 @@ state.txt → grid evolution
 Cell States:
 0 → uninformed
 1 → informed
-🔄 Data Processing
+ Data Processing
 python3 scripts/convert_state_to_csv.py
 
 This generates:
 
 viewer/data.csv
-🌐 Visualization
+ Visualization
 cd viewer
 python3 -m http.server 8000
 
 Then open:
 
 http://localhost:8000/index.html
-🧪 Experimental Variations
+ Experimental Variations
 
 You can modify:
 
@@ -114,14 +114,14 @@ Examples:
 Single vs multiple sources
 Sparse vs dense spread
 Small vs large grids
-📜 Scripts Description
+ Scripts Description
 convert_state_to_csv.py
 Reads state.txt
 Converts to CSV
 Generates viewer/data.csv
-🎥 Video Demonstration
+ Video Demonstration
 Media1.mp4 shows rumor propagation behavior
-🧪 Verification Steps
+ Verification Steps
 git clone https://github.com/baharprh/RumorPropagation_CellDEVS.git
 cd RumorPropagation_CellDEVS
 git submodule update --init --recursive
@@ -132,7 +132,7 @@ cmake ..
 make
 
 ../bin/rumor_sim ../model/rumor_config.json 50
-⚠️ Common Issues
+ Common Issues
 No such file → wrong path
 scenario not found → wrong JSON
 No output → simulation didn’t run
