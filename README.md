@@ -14,12 +14,14 @@ RumorPropagation_CellDEVS/
 ├── src/ # C++ source files (Cell-DEVS models)
 ├── model/ # JSON configuration files
 ├── scripts/ # Data processing scripts
-├── logs/ # Simulation outputs
+├── logs/ # Simulation outputs (generated after run)
 ├── viewer/ # Web visualization (D3.js)
-├── report/ # Final report
+├── report/ # Final report document
 ├── bin/ # Executable files
 ├── build/ # Build directory
 ├── RumorPropagation_Assign2/ # Assignment 2 implementation
+├── CMakeLists.txt
+├── Media1.mp4 # Visualization video
 └── README.md
 
 
@@ -31,7 +33,7 @@ RumorPropagation_CellDEVS/
 - CMake ≥ 3.16  
 - Python 3  
 - Web browser  
-- Cadmium library (configured in devssim)
+- Cadmium library (configured in devssim environment)
 
 ---
 
@@ -78,16 +80,19 @@ cells.default → default cell behavior
 cells.infected → initial rumor sources
 Output
 
-After running simulation, output files are generated in:
+After running the simulation, output files are generated in:
 
 logs/
 Files
 output_messages.txt → simulation messages
-state.txt → grid evolution
+state.txt → grid state evolution
 Cell States
 0 → uninformed
 1 → informed
 Data Processing
+
+Convert simulation output for visualization:
+
 python3 scripts/convert_state_to_csv.py
 
 This generates:
@@ -97,34 +102,43 @@ Visualization
 cd viewer
 python3 -m http.server 8000
 
-Then open:
+Then open in browser:
 
 http://localhost:8000/index.html
+
+The visualization displays:
+
+Grid evolution over time
+Rumor propagation behavior
+Interactive timeline
 Experimental Variations
 
-You can modify:
+You can test different scenarios by modifying:
 
 Grid size
 Number of infected cells
-Initial positions
+Initial cell positions
 
-Examples:
+Example experiments:
 
 Single vs multiple sources
-Sparse vs dense spread
+Sparse vs dense propagation
 Small vs large grids
 Scripts Description
 
 convert_state_to_csv.py:
 
-Reads state.txt
-Converts to CSV
-Generates viewer/data.csv
+Reads simulation output (state.txt)
+Converts data into CSV format
+Generates viewer/data.csv for visualization
 Video Demonstration
 
-Media1.mp4 shows rumor propagation behavior.
+Media1.mp4 shows the dynamic rumor propagation behavior using the web viewer.
 
 Verification Steps
+
+To verify correctness from a clean setup:
+
 git clone https://github.com/baharprh/RumorPropagation_CellDEVS.git
 cd RumorPropagation_CellDEVS
 git submodule update --init --recursive
@@ -136,21 +150,21 @@ make
 
 ../bin/rumor_sim ../model/rumor_config.json 50
 Common Issues
-No such file → wrong path
-scenario not found → wrong JSON
-No output → simulation didn’t run
-Viewer empty → run conversion script
+No such file → incorrect path
+scenario not found → wrong JSON file
+No output generated → simulation not executed correctly
+Empty visualization → run conversion script before viewer
 Notes
-Uses Moore neighborhood (8 neighbors)
-Cell-DEVS discrete-event model
-Local interaction-based propagation
+Uses Moore neighborhood (8-connected cells)
+Implements Cell-DEVS discrete-event simulation
+Behavior is based on local interactions between neighboring cells
 References
 Cadmium Simulation Framework
 Cell-DEVS Formalism
-devssim Viewer
+devssim Cell-DEVS Viewer
 Final Checklist
-Code compiles
-Simulation runs
-Logs generated
+Code compiles successfully
+Simulation runs without errors
+Logs are generated
 Visualization works
-README complete
+README provides full instructions
