@@ -42,32 +42,36 @@ Each cell is defined as:
 - **Local Transition Function:**
 
 
+```markdown
+**Local Transition Function:**
+
+```text
 if any neighbor == 1:
-next_state = 1
+    next_state = 1
 else:
-next_state = current_state
+    next_state = current_state
 
 
 - **Delay:** 1 simulation step
-
+```
 ---
 
+```markdown
 ## 4. Project Structure
 
 
 RumorPropagation_CellDEVS/
-├── src/ # Cell-DEVS C++ models
-├── model/ # JSON configuration files
-├── scripts/ # Data processing scripts
-├── logs/ # Simulation outputs
-├── viewer/ # Web visualization
-├── report/ # Final report
-├── bin/ # Executables
-├── build/ # Build directory
-├── RumorPropagation_Assign2/# Assignment implementation
+├── src/
+├── model/
+├── scripts/
+├── logs/
+├── viewer/
+├── report/
+├── bin/
+├── build/
+├── RumorPropagation_Assign2/
 └── README.md
-
-
+```
 ---
 
 ## 5. Requirements
@@ -96,9 +100,12 @@ cd build
 cmake ..
 make
 ```
+```
 ## 8. How to Run
+```bash
 cd build
 ../bin/rumor_sim ../model/rumor_config.json 50
+```
 ## 9. Experimental Framework
 
 The simulation behavior is controlled using:
@@ -108,6 +115,7 @@ Key Parameters:
 scenario.shape → grid size
 scenario.wrapped → boundary condition
 cells.infected → initial rumor sources
+This enables evaluation of the model under different initial conditions and validates the propagation behavior.
 ## 10. Output Files
 
 After simulation:
@@ -159,10 +167,13 @@ Sparse vs dense initialization
 These variations demonstrate system behavior under different conditions.
 
 ## 15. Scripts Description
-convert_state_to_csv.py
-Reads state.txt
-Converts to CSV format
-Generates viewer/data.csv for visualization
+
+### convert_state_to_csv.py
+
+This script:
+- Reads simulation output (`state.txt`)
+- Converts it into CSV format
+- Generates `viewer/data.csv` for visualization in the Web Viewer
 ## 16. Verification (IMPORTANT FOR PROF)
 
 To verify correctness from a clean environment:
@@ -186,13 +197,13 @@ File not found	Check paths
 JSON error	Validate config file
 No output	Ensure simulation runs
 Empty viewer	Run conversion script
-18. Key Features
+## 18. Key Features
 Cell-DEVS discrete-event simulation
 Local interaction modeling
 Scalable grid-based system
 Visualization using Web Viewer
 Fully reproducible simulation
-19. References
+## 19. References
 Cadmium Simulation Framework
 Cell-DEVS Formalism
 https://devssim.carleton.ca/cell-devs-viewer/
