@@ -1,25 +1,28 @@
 {
-  "shape": [20, 20],
-  "wrapped": false,
+  "scenario": {
+    "shape": [20, 20],
+    "wrapped": false
+  },
   "cells": {
     "default": {
       "delay": "inertial",
       "cell_type": "rumor",
+      "state": { "state": 0 },
       "neighborhood": [
         {
           "type": "moore",
           "range": 1,
           "vicinity": 1
         }
-      ],
-      "state": 0,
-      "config": 1
+      ]
     },
-    "seed": {
-      "state": 1
+    "infected": {
+      "state": { "state": 1 },
+      "cell_map": [
+        [5, 5],
+        [10, 10],
+        [15, 15]
+      ]
     }
-  },
-  "cell_map": {
-    "seed": [[5, 5], [10, 10], [15, 15]]
   }
 }

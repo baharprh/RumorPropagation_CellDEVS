@@ -191,7 +191,7 @@ These scripts are intended to process raw simulation logs, generate viewer asset
 
 ### Run Scripts
 
-From the repository root, the simulation can be executed with:
+From the repository root, the supported experiment scripts are:
 
 ```bash
 ./scripts/run_rumor_default.sh
@@ -199,6 +199,13 @@ From the repository root, the simulation can be executed with:
 ./scripts/run_rumor_three_sources.sh
 ./scripts/run_rumor_large_grid.sh
 ```
+
+These scripts were verified against the current repository layout and run the following scenarios:
+
+- `run_rumor_default.sh` : default 30x30 rumor propagation setup
+- `run_rumor_single_source.sh` : 20x20 grid with one initial source
+- `run_rumor_three_sources.sh` : 20x20 grid with three initial sources
+- `run_rumor_large_grid.sh` : larger 30x30 scenario using the alternate configuration file
 
 Each script runs `bin/rumor_sim` with a different configuration file from `model/`.
 
