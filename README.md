@@ -42,7 +42,7 @@ Each cell is defined as:
 - **Local Transition Function:**
 
 
-```markdown
+
 **Local Transition Function:**
 
 ```text
