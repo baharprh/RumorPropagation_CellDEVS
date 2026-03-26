@@ -96,7 +96,7 @@ make
 8. How to Run
 cd build
 ../bin/rumor_sim ../model/rumor_config.json 50
-9. Experimental Framework
+## 9. Experimental Framework
 
 The simulation behavior is controlled using:
 
@@ -105,7 +105,7 @@ Key Parameters:
 scenario.shape → grid size
 scenario.wrapped → boundary condition
 cells.infected → initial rumor sources
-10. Output Files
+## 10. Output Files
 
 After simulation:
 
@@ -115,7 +115,7 @@ Generated files:
 
 output_messages.txt → simulation messages
 state.txt → grid evolution
-11. Data Processing
+## 11. Data Processing
 
 Convert simulation output to visualization format:
 
@@ -124,7 +124,7 @@ python3 scripts/convert_state_to_csv.py
 This generates:
 
 viewer/data.csv
-12. Visualization (REQUIRED)
+## 12. Visualization (REQUIRED)
 
 Start local server:
 
@@ -137,7 +137,7 @@ http://localhost:8000/index.html
 
 ✔ This step is MANDATORY for grading (prof will check this)
 
-13. Video Demonstration
+## 13. Video Demonstration
 
 The file:
 
@@ -145,7 +145,7 @@ Media1.mp4
 
 demonstrates the rumor propagation behavior using the Web Viewer.
 
-14. Experimental Variations
+## 14. Experimental Variations
 
 Different scenarios tested:
 
@@ -155,12 +155,12 @@ Sparse vs dense initialization
 
 These variations demonstrate system behavior under different conditions.
 
-15. Scripts Description
+## 15. Scripts Description
 convert_state_to_csv.py
 Reads state.txt
 Converts to CSV format
 Generates viewer/data.csv for visualization
-16. Verification (IMPORTANT FOR PROF)
+## 16. Verification (IMPORTANT FOR PROF)
 
 To verify correctness from a clean environment:
 
@@ -177,7 +177,7 @@ make
 
 ✔ If this works → project is correct
 
-17. Common Issues
+## 17. Common Issues
 Issue	Solution
 File not found	Check paths
 JSON error	Validate config file
