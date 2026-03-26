@@ -88,11 +88,14 @@ cd RumorPropagation_CellDEVS
 git submodule update --init --recursive
 ```
 ## 7. How to Build
+
+```bash
 rm -rf build
 mkdir build
 cd build
 cmake ..
 make
+```
 ## 8. How to Run
 cd build
 ../bin/rumor_sim ../model/rumor_config.json 50
