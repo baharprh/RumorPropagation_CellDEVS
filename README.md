@@ -97,7 +97,7 @@ cd build
 cmake ..
 make
 ```
-```
+
 ## 8. How to Run
 ```bash
 cd build
@@ -107,11 +107,14 @@ cd build
 
 The simulation behavior is controlled using:
 
-model/rumor_config.json
-Key Parameters:
-scenario.shape → grid size
-scenario.wrapped → boundary condition
-cells.infected → initial rumor sources
+`model/rumor_config.json`
+
+### Key Parameters:
+
+- `scenario.shape` → grid size  
+- `scenario.wrapped` → boundary condition  
+- `cells.infected` → initial rumor sources  
+
 This enables evaluation of the model under different initial conditions and validates the propagation behavior.
 ## 10. Output Files
 
