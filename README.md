@@ -50,10 +50,10 @@ if any neighbor == 1:
     next_state = 1
 else:
     next_state = current_state
-
+```
 
 - **Delay:** 1 simulation step
-```
+
 ---
 
 ```markdown
@@ -71,7 +71,7 @@ RumorPropagation_CellDEVS/
 ├── build/
 ├── RumorPropagation_Assign2/
 └── README.md
-```
+
 ---
 
 ## 5. Requirements
