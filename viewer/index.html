@@ -1,94 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Rumor Propagation</title>
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rumor Propagation Viewer</title>
   <style>
-    body { font-family: Arial; }
-    #time { font-size: 20px; margin-bottom: 10px; }
-    rect { stroke: #ccc; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 30px;
+      text-align: center;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .legend {
+      margin-top: 20px;
+      text-align: left;
+      display: inline-block;
+    }
+    .legend div {
+      margin: 8px 0;
+    }
+    .box {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 1px solid #999;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .yellow { background: yellow; }
+    .blue { background: blue; }
+    .red { background: red; }
+    a {
+      color: #0b57d0;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Rumor Propagation using Cell-DEVS</h1>
+    <p>This page displays the generated rumor propagation animation.</p>
 
-<h2>Rumor Propagation</h2>
-<div id="time">Time: 0</div>
-<svg id="grid"></svg>
+    <img src="rumor_propagation.gif" alt="Rumor propagation animation" />
 
-<script>
-const width = 30;
-const height = 30;
-const cellSize = 18;
+    <div class="legend">
+      <div><span class="box yellow"></span>State 0: unaware</div>
+      <div><span class="box blue"></span>State 1: spreading rumor</div>
+      <div><span class="box red"></span>State 2: inactive</div>
+    </div>
 
-const colors = {
-  0: "yellow",   // ignorant
-  1: "blue",     // spreader
-  2: "red",      // stifler
-  3: "black"
-};
-
-const svg = d3.select("#grid")
-  .attr("width", width * cellSize)
-  .attr("height", height * cellSize);
-
-const timeLabel = d3.select("#time");
-
-// create grid
-let cells = [];
-for (let y = 0; y < height; y++) {
-  for (let x = 0; x < width; x++) {
-    cells.push({x, y});
-  }
-}
-
-svg.selectAll("rect")
-  .data(cells)
-  .enter()
-  .append("rect")
-  .attr("x", d => d.x * cellSize)
-  .attr("y", d => (height - 1 - d.y) * cellSize)
-  .attr("width", cellSize)
-  .attr("height", cellSize)
-  .attr("fill", "yellow");
-
-// load data
-d3.csv("data.csv").then(data => {
-  data.forEach(d => {
-    d.time = +d.time;
-    d.x = +d.x;
-    d.y = +d.y;
-    d.state = +d.state;
-  });
-
-  const grouped = d3.group(data, d => d.time);
-  const times = Array.from(grouped.keys()).sort((a,b) => a-b);
-
-  let t = 0;
-
-  function update() {
-    const frame = grouped.get(times[t]);
-
-    const map = new Map();
-    frame.forEach(d => {
-      map.set(`${d.x},${d.y}`, d.state);
-    });
-
-    svg.selectAll("rect")
-      .attr("fill", d => {
-        const key = `${d.x},${d.y}`;
-        return colors[map.get(key) ?? 0];
-      });
-
-    timeLabel.text("Time: " + times[t]);
-
-    t = (t + 1) % times.length;
-  }
-
-  update();
-  setInterval(update, 300);
-});
-</script>
-
+    <p style="margin-top:20px;">
+      Files:
+      <a href="rumor_propagation.gif">GIF</a> |
+      <a href="data.csv">CSV</a> |
+      <a href="state_messages.txt">State Log</a>
+    </p>
+  </div>
 </body>
 </html>

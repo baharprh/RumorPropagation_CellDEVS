@@ -1,26 +1,19 @@
 {
-  "scenario": {
-    "shape": [30, 30],
-    "wrapped": false
-  },
-  "cells": {
-    "default": {
-      "delay": "inertial",
-      "cell_type": "rumor",
-      "state": { "state": 0 },
-      "neighborhood": [
-        {
-          "type": "moore",
-          "range": 1,
-          "vicinity": 1
-        }
-      ]
+  "top": "top",
+  "models": [
+    {
+      "id": "top",
+      "type": "coupled",
+      "components": ["grid"]
     },
-    "infected": {
-      "state": { "state": 1 },
-      "cell_map": [
-        [15, 15]
-      ]
+    {
+      "id": "grid",
+      "type": "cell",
+      "dim": [30, 30, 1],
+      "state": {
+        "type": "int",
+        "default": 0
+      }
     }
-  }
+  ]
 }
