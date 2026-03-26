@@ -1,4 +1,4 @@
-# Rumor Propagation using Cell-DEVS (Cadmium) - Assignment 2
+# Rumor Propagation using Cell-DEVS (Cadmium) 
 
 ## Overview
 
