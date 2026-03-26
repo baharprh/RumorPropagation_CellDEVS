@@ -1,105 +1,231 @@
 # Rumor Propagation using Cell-DEVS (Cadmium) - Assignment 2
 
 ## Overview
-This is Assignment 2 of the Rumor Propagation project. It implements a rumor propagation model using the Cell-DEVS formalism in the Cadmium simulation framework. The system models how a rumor spreads across a 2D grid based on local interactions between neighboring cells.
+
+This project implements a rumor propagation model using the Cell-DEVS formalism in the Cadmium simulation framework. The model simulates how a rumor spreads across a 2D grid through local neighborhood interactions.
+
+The repository includes:
+
+- the C++ Cell-DEVS model
+- multiple JSON scenario configurations
+- scripts for processing simulation outputs
+- a restored working viewer based on a generated GIF
+- the final report document
+
+---
 
 ## Project Structure
+
 - `src/` : C++ source files for the Cell-DEVS model
-- `model/` : JSON configuration files (initial conditions and parameters)
-- `scripts/` : scripts for processing logs and generating visualization data
-- `logs/` : simulation output files
-- `viewer/` : web-based visualization (D3.js)
+- `model/` : simulation configurations and model notes
+- `scripts/` : helper scripts for post-processing simulation output
+- `viewer/` : visualization assets and viewer page
 - `report/` : final report document
-- `bin/` : compiled executables
+- `bin/` : compiled executable
+
+---
 
 ## Main Files
+
 - `src/main.cpp` : simulation entry point
-- `src/rumorCell.hpp` : atomic Cell-DEVS model (cell behavior)
+- `src/rumorCell.hpp` : cell behavior definition
 - `src/rumor_coupled.hpp` : coupled grid model
-- `model/rumor_config.json` : simulation configuration
-- `viewer/index.html` : visualization interface
+- `model/rumor_config.json` : default simulation configuration
+- `viewer/index.html` : visualization page
+- `viewer/rumor_propagation.gif` : working animation used by the viewer
 - `bin/rumor_sim` : compiled simulation executable
 
 ---
 
 ## Requirements
-- C++ compiler (C++17 or later)
-- CMake 3.16+
+
+- C++17 compatible compiler
+- CMake 3.16 or newer
 - Python 3
 - Web browser
-- Cadmium library (CADMIUM environment variable must be set)
+- Cadmium library configured in your environment
 
 ---
 
-## How to Build
+## Build
+
+From the repository root:
 
 ```bash
-# From the Assign2 directory
-mkdir build
+mkdir -p build
 cd build
 cmake ..
 cmake --build .
 ```
 
-The executable will be created at: `./bin/rumor_sim`
+The executable is available at:
+
+```bash
+./bin/rumor_sim
+```
 
 ---
 
-## How to Run
+## Run the Simulation
+
+From the repository root:
 
 ```bash
 ./bin/rumor_sim ./model/rumor_config.json [MAX_TIME]
 ```
 
 Example:
+
 ```bash
 ./bin/rumor_sim ./model/rumor_config.json 50
 ```
 
-This will generate output logs in the `logs/` folder:
-- `output_messages.txt` : detailed simulation messages
-- `state.txt` : cell states over time
+Depending on your Cadmium setup, the simulation may generate raw log files such as:
+
+- `logs/state.txt`
+- `logs/output_messages.txt`
+
+These raw files are used by the helper scripts in `scripts/`.
 
 ---
 
 ## Configuration
 
-The `model/rumor_config.json` file controls the simulation parameters:
-- `scenario.shape` : grid dimensions [rows, cols]
-- `scenario.wrapped` : whether grid wraps at edges (true/false)
-- `cells.default` : default cell configuration
-- `cells.infected` : infected/seed cells initial positions
+The main simulation parameters are stored in `model/rumor_config.json`.
+
+Useful fields include:
+
+- `scenario.shape` : grid size as `[rows, cols]`
+- `scenario.wrapped` : whether the grid wraps at the edges
+- `cells.default` : default state for cells
+- `cells.infected` : initial rumor source positions
+
+Additional scenarios are also included in `model/`, such as:
+
+- `rumor_config_1.json`
+- `rumor_config_3sources.json`
+- `rumor_config_large.json`
 
 ---
 
-## Output
+## Cell States
 
-Simulation generates two output files in `logs/`:
-- **output_messages.txt** : timestamped messages and state transitions
-- **state.txt** : complete state snapshots at each time step
-
-Cell states:
-- `0` : uninformed (no rumor)
-- `1` : informed/infected (has rumor)
+- `0` : unaware
+- `1` : spreading rumor
+- `2` : inactive
 
 ---
 
 ## Visualization
 
-View simulation results in a web browser:
+The current working visualization is the restored GIF-based viewer in `viewer/`.
+
+Important files:
+
+- `viewer/index.html`
+- `viewer/rumor_propagation.gif`
+- `viewer/state_messages.txt`
+- `viewer/data.csv`
+
+### Open the Visualization
+
+From the `viewer/` directory:
+
 ```bash
-cd viewer
-python3 -m http.server 8000
+python3 -m http.server 8080
 ```
 
-Then open: `http://localhost:8000/index.html`
+Then open:
 
-Pre-generated visualization data is available in `viewer/data.csv`
+```text
+http://127.0.0.1:8080/index.html
+```
+
+Notes:
+
+- `8080` is recommended because port `8000` may already be in use on your machine.
+- If you are already inside the `viewer/` folder, do not run `cd viewer` again.
+- The viewer displays `viewer/rumor_propagation.gif`, so it can be opened reliably through the browser without depending on external JavaScript libraries.
+
+### If Port 8080 Is Busy
+
+Try another port:
+
+```bash
+python3 -m http.server 8090
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8090/index.html
+```
+
+---
+
+## Included Viewer Assets
+
+Pre-generated visualization assets are already included in this repository:
+
+- `viewer/rumor_propagation.gif`
+- `viewer/state_messages.txt`
+- `viewer/data.csv`
+
+This means you can open the visualization immediately without rerunning the full simulation first.
+
+---
+
+## Helper Scripts
+
+The repository includes helper scripts in `scripts/` for post-processing simulation outputs:
+
+- `scripts/convert_state_to_csv.py`
+- `scripts/make_messages_log.py`
+- `scripts/make_rumor_animation.py`
+- `scripts/run_rumor_default.sh`
+- `scripts/run_rumor_single_source.sh`
+- `scripts/run_rumor_three_sources.sh`
+- `scripts/run_rumor_large_grid.sh`
+
+These scripts are intended to process raw simulation logs, generate viewer assets, and run the main experimental configurations included in the repository.
+
+### Run Scripts
+
+From the repository root, the simulation can be executed with:
+
+```bash
+./scripts/run_rumor_default.sh
+./scripts/run_rumor_single_source.sh
+./scripts/run_rumor_three_sources.sh
+./scripts/run_rumor_large_grid.sh
+```
+
+Each script runs `bin/rumor_sim` with a different configuration file from `model/`.
+
+---
+
+## Report and Video
+
+The final report is available at:
+
+- `report/Rumor_Propagation_CellDEVS_Final_Report.docx`
+
+The visualization video is available at:
+
+- `rumor_propagation_visualization.mp4`
+
+---
+
+## Submission Note
+
+One manual submission item still needs to be checked before final delivery:
+
+- include the required `DEVSmodelsForm` file if it has not yet been added to the repository
 
 ---
 
 ## Notes
-- The simulation uses Moore neighborhood (8-connected cells)
-- Rumor propagation is based on local interactions between neighboring cells
-- Different initial conditions can be tested by modifying `model/rumor_config.json`
-- Maximum simulation time can be specified as a command-line argument (default: 50)
+
+- The model uses local neighborhood interactions on a 2D grid.
+- Different rumor-spread scenarios can be tested by changing the JSON configuration.
+- The current restored viewer is based on the generated GIF asset, because that is the workflow confirmed to work reliably in this repository.
