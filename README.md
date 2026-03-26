@@ -56,7 +56,7 @@ else:
 
 ## 4. Project Structure
 
-```
+
 RumorPropagation_CellDEVS/
 ├── src/
 ├── model/
