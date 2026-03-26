@@ -41,6 +41,7 @@ RumorPropagation_CellDEVS/
 git clone https://github.com/baharprh/RumorPropagation_CellDEVS.git
 cd RumorPropagation_CellDEVS
 git submodule update --init --recursive
+---
 How to Build
 Clean Build (Recommended)
 rm -rf build
