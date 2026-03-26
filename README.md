@@ -80,20 +80,20 @@ RumorPropagation_CellDEVS/
 
 ---
 
-## 6. How to Clone
+## 6. How to clone
 
 ```bash
 git clone https://github.com/baharprh/RumorPropagation_CellDEVS.git
 cd RumorPropagation_CellDEVS
 git submodule update --init --recursive
 ```
-7. How to Build
+## 7. How to Build
 rm -rf build
 mkdir build
 cd build
 cmake ..
 make
-8. How to Run
+## 8. How to Run
 cd build
 ../bin/rumor_sim ../model/rumor_config.json 50
 ## 9. Experimental Framework
