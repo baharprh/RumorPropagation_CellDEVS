@@ -50,8 +50,9 @@ if any neighbor == 1:
     next_state = 1
 else:
     next_state = current_state
+    ```
 - **Delay:** 1 simulation step
-```
+
 ---
 
 ## 4. Project Structure
