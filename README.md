@@ -43,7 +43,7 @@ cd RumorPropagation_CellDEVS
 git submodule update --init --recursive
 ```
 How to Build
-Clean Build (Recommended)
+
 rm -rf build
 mkdir build
 cd build
