@@ -49,9 +49,9 @@ if any neighbor == 1:
     next_state = 1
 else:
     next_state = current_state
----
-```markdown
+```
 ## 4. Project Structure
+
 
 RumorPropagation_CellDEVS/
 ├── src/
@@ -64,7 +64,6 @@ RumorPropagation_CellDEVS/
 ├── build/
 ├── RumorPropagation_Assign2/
 └── README.md
-
 ---
 
 ## 5. Requirements
