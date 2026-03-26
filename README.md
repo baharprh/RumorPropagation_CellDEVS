@@ -41,9 +41,7 @@ RumorPropagation_CellDEVS/
 git clone https://github.com/baharprh/RumorPropagation_CellDEVS.git
 cd RumorPropagation_CellDEVS
 git submodule update --init --recursive
-```
-## How to Build
-
+How to Build
 rm -rf build
 mkdir build
 cd build
@@ -108,9 +106,7 @@ You can modify:
 Grid size
 Number of infected cells
 Initial positions
-
-Examples:
-
+Examples
 Single vs multiple sources
 Sparse vs dense spread
 Small vs large grids
