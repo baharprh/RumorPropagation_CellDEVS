@@ -44,19 +44,14 @@ Each cell is defined as:
 
 
 **Local Transition Function:**
-
 ```text
 if any neighbor == 1:
     next_state = 1
 else:
     next_state = current_state
-    ```
-**Delay:** 1 simulation step
-
 ---
-
+```markdown
 ## 4. Project Structure
-
 
 RumorPropagation_CellDEVS/
 ├── src/
