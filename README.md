@@ -59,7 +59,7 @@ else:
 ```markdown
 ## 4. Project Structure
 
-
+```
 RumorPropagation_CellDEVS/
 ├── src/
 ├── model/
@@ -192,18 +192,22 @@ make
 ✔ If this works → project is correct
 
 ## 17. Common Issues
-Issue	Solution
-File not found	Check paths
-JSON error	Validate config file
-No output	Ensure simulation runs
-Empty viewer	Run conversion script
+
+| Issue | Solution |
+|------|--------|
+| File not found | Check paths |
+| JSON error | Validate config file |
+| No output | Ensure simulation runs |
+| Empty viewer | Run conversion script |
 ## 18. Key Features
-Cell-DEVS discrete-event simulation
-Local interaction modeling
-Scalable grid-based system
-Visualization using Web Viewer
-Fully reproducible simulation
+
+- Cell-DEVS discrete-event simulation  
+- Local interaction modeling  
+- Scalable grid-based system  
+- Visualization using Web Viewer  
+- Fully reproducible simulation  
 ## 19. References
-Cadmium Simulation Framework
-Cell-DEVS Formalism
-https://devssim.carleton.ca/cell-devs-viewer/
+
+- Cadmium Simulation Framework  
+- Cell-DEVS Formalism  
+- https://devssim.carleton.ca/cell-devs-viewer/
