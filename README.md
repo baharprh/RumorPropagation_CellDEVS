@@ -54,7 +54,6 @@ else:
 
 ---
 
-```markdown
 ## 4. Project Structure
 
 ```
