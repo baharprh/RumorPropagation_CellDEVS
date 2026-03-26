@@ -56,15 +56,15 @@ else:
 
 
 RumorPropagation_CellDEVS/
-├── src/
-├── model/
-├── scripts/
-├── logs/
-├── viewer/
-├── report/
-├── bin/
-├── build/
-├── RumorPropagation_Assign2/
+├── src/ # Cell-DEVS C++ models
+├── model/ # JSON configuration files
+├── scripts/ # Data processing scripts
+├── logs/ # Simulation outputs
+├── viewer/ # Web visualization
+├── report/ # Final report
+├── bin/ # Executables
+├── build/ # Build directory
+├── RumorPropagation_Assign2/ # Assignment implementation
 └── README.md
 ---
 
