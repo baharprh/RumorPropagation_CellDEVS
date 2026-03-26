@@ -54,7 +54,7 @@ else:
 
 ## 4. Project Structure
 
-
+```
 RumorPropagation_CellDEVS/
 ├── src/ # Cell-DEVS C++ models
 ├── model/ # JSON configuration files
@@ -66,7 +66,8 @@ RumorPropagation_CellDEVS/
 ├── build/ # Build directory
 ├── RumorPropagation_Assign2/ # Assignment implementation
 └── README.md
----
+
+```
 
 ## 5. Requirements
 
