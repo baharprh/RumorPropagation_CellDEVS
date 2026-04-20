@@ -3,7 +3,7 @@ import re
 from pathlib import Path
 
 base_dir = Path(__file__).resolve().parent.parent
-input_file = base_dir / "logs" / "state.txt"
+input_file = base_dir / "viewer" / "data.csv"
 output_file = base_dir / "viewer" / "transitions.csv"
 
 time_pattern = re.compile(r"^\s*([0-9]+(?:\.[0-9]+)?)\s*$")
