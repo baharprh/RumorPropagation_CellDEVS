@@ -3,6 +3,7 @@
 #include <string>
 
 #include <cadmium/simulation/root_coordinator.hpp>
+#include <cadmium/core/logger/csv.hpp>
 #include "rumor_coupled.hpp"
 
 using namespace cadmium;
@@ -19,6 +20,9 @@ int main(int argc, char **argv) {
     auto model = std::make_shared<rumor_coupled<rumorState, int>>("rumor", config);
 
     RootCoordinator rootCoordinator(model);
+
+    auto logger = std::make_shared<cadmium::CSVLogger>("bin/messages.csv", ";");
+    rootCoordinator.setLogger(logger);
 
     rootCoordinator.start();
     rootCoordinator.simulate(1000.0);
