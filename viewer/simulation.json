@@ -6,23 +6,26 @@
   },
   "cells": {
     "default": {
-      "cell_type": "rumor",
       "delay": "inertial",
-      "state": {
-        "state": 0
-      },
+      "cell_type": "rumor",
+      "state": 0,
       "neighborhood": [
         {
           "type": "moore",
-          "range": 1
+          "range": 1,
+          "vicinity": 1
         }
       ]
+    },
+    "infected": {
+      "state": 1,
+      "cell_map": [[7, 7], [15, 15], [22, 22]]
     }
   },
   "viewer": [
     {
       "field": "state",
-      "breaks": [0, 1, 2, 3],
+      "breaks": [0.0, 0.5, 1.5, 2.5],
       "colors": [
         [255, 255, 255],
         [0, 0, 255],
