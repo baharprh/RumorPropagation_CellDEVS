@@ -1,4 +1,4 @@
-# Rumor Propagation using Cell-DEVS (Cadmium) 
+# Rumor Propagation using Cell-DEVS (Cadmium)
 
 ## Overview
 
@@ -6,48 +6,28 @@ This project implements a rumor propagation model using the Cell-DEVS formalism 
 
 The repository includes:
 
-- the C++ Cell-DEVS model
-- multiple JSON scenario configurations
-- scripts for processing simulation outputs
-- a restored working viewer based on a generated GIF
-- the final report document
+- C++ Cell-DEVS model implementation
+- Multiple simulation scenarios (JSON configurations)
+- Experiment scripts
+- Simulation logs
+- Visualization assets (Cell-DEVS viewer compatible)
+- Final report and video
 
 ---
 
 ## Project Structure
 
-- `src/` : C++ source files for the Cell-DEVS model
-- `model/` : simulation configurations and model notes
-- `scripts/` : helper scripts for post-processing simulation output
-- `viewer/` : visualization assets and viewer page
-- `report/` : final report document
-- `bin/` : compiled executable
+- `src/` : C++ source files for the Cell-DEVS model  
+- `model/` : simulation configurations  
+- `scripts/` : experiment execution scripts  
+- `logs/` : simulation output logs (per experiment)  
+- `viewer/` : visualization files for Cell-DEVS viewer  
+- `report/` : final report document  
+- `bin/` : compiled executable  
 
 ---
 
-## Main Files
-
-- `src/main.cpp` : simulation entry point
-- `src/rumorCell.hpp` : cell behavior definition
-- `src/rumor_coupled.hpp` : coupled grid model
-- `model/rumor_config.json` : default simulation configuration
-- `viewer/index.html` : visualization page
-- `viewer/rumor_propagation.gif` : working animation used by the viewer
-- `bin/rumor_sim` : compiled simulation executable
-
----
-
-## Requirements
-
-- C++17 compatible compiler
-- CMake 3.16 or newer
-- Python 3
-- Web browser
-- Cadmium library configured in your environment
-
----
-
-## Build
+## Build Instructions
 
 From the repository root:
 
@@ -56,183 +36,118 @@ mkdir -p build
 cd build
 cmake ..
 cmake --build .
-```
+cd ..
 
-The executable is available at:
+Executable will be available at:
 
-```bash
 ./bin/rumor_sim
-```
+Running the Simulation
 
----
+General command:
 
-## Run the Simulation
-
-From the repository root:
-
-```bash
 ./bin/rumor_sim ./model/rumor_config.json [MAX_TIME]
-```
 
 Example:
 
-```bash
 ./bin/rumor_sim ./model/rumor_config.json 50
-```
+Experiment Scripts
 
-Depending on your Cadmium setup, the simulation may generate raw log files such as:
+The following scripts are provided to execute different simulation scenarios:
 
-- `logs/state.txt`
-- `logs/output_messages.txt`
+bash scripts/run_rumor_default.sh
+bash scripts/run_rumor_single_source.sh
+bash scripts/run_rumor_three_sources.sh
+bash scripts/run_rumor_large_grid.sh
 
-These raw files are used by the helper scripts in `scripts/`.
+Each script runs the simulator with a different configuration:
 
----
+Script	Description
+run_rumor_default.sh	Default 30x30 scenario
+run_rumor_single_source.sh	Single initial infected cell
+run_rumor_three_sources.sh	Three initial infected cells
+run_rumor_large_grid.sh	Larger grid simulation
+Logs (Simulation Results)
 
-## Configuration
+Simulation outputs are generated as CSV files inside the viewer/ directory.
 
-The main simulation parameters are stored in `model/rumor_config.json`.
+For each experiment, the file:
 
-Useful fields include:
+viewer/grid_log.csv
 
-- `scenario.shape` : grid size as `[rows, cols]`
-- `scenario.wrapped` : whether the grid wraps at the edges
-- `cells.default` : default state for cells
-- `cells.infected` : initial rumor source positions
+is copied into the logs/ directory to create clear experiment logs:
 
-Additional scenarios are also included in `model/`, such as:
+Log File	Description
+logs/default_run.log	Default scenario results
+logs/single_source_run.log	Single-source scenario
+logs/three_sources_run.log	Three-source scenario
+logs/large_grid_run.log	Large-grid scenario
 
-- `rumor_config_1.json`
-- `rumor_config_3sources.json`
-- `rumor_config_large.json`
+Each log file contains the full state evolution of the grid over time.
 
----
+This satisfies the assignment requirement for:
 
-## Cell States
+execution logs
+reproducible experiments
+Configuration Files
 
-- `0` : unaware
-- `1` : spreading rumor
-- `2` : inactive
+Located in model/:
 
----
+rumor_config.json (default)
+rumor_config_1.json
+rumor_config_3sources.json
+rumor_config_large.json
 
-## Visualization
+Main parameters:
 
-The current working visualization is the restored GIF-based viewer in `viewer/`.
+scenario.shape : grid size
+scenario.wrapped : boundary condition
+cells.infected : initial rumor sources
+Cell States
+0 → unaware
+1 → spreading rumor
+2 → inactive
+Visualization
 
-Important files:
+Simulation results can be visualized using the provided viewer files.
 
-- `viewer/index.html`
-- `viewer/rumor_propagation.gif`
-- `viewer/state_messages.txt`
-- `viewer/data.csv`
+Relevant files:
 
-### Open the Visualization
-
-From the `viewer/` directory:
-
-```bash
+viewer/index.html
+viewer/simulation.json
+viewer/grid_log.csv
+Run Viewer
+cd viewer
 python3 -m http.server 8080
-```
 
-Then open:
+Open in browser:
 
-```text
 http://127.0.0.1:8080/index.html
-```
+Included Assets
 
-Notes:
+Pre-generated outputs are included:
 
-- `8080` is recommended because port `8000` may already be in use on your machine.
-- If you are already inside the `viewer/` folder, do not run `cd viewer` again.
-- The viewer displays `viewer/rumor_propagation.gif`, so it can be opened reliably through the browser without depending on external JavaScript libraries.
+viewer/grid_log.csv
+viewer/data.csv
+viewer/state_messages.txt
+rumor_propagation_visualization.mp4
+Report and Video
 
-### If Port 8080 Is Busy
+Report:
 
-Try another port:
+report/Rumor_Propagation_CellDEVS_Final_Report.docx
 
-```bash
-python3 -m http.server 8090
-```
+Video:
 
-Then open:
+rumor_propagation_visualization.mp4
+Reproducibility
 
-```text
-http://127.0.0.1:8090/index.html
-```
+To fully reproduce results:
 
----
+bash scripts/run_rumor_default.sh
+bash scripts/run_rumor_single_source.sh
+bash scripts/run_rumor_three_sources.sh
+bash scripts/run_rumor_large_grid.sh
 
-## Included Viewer Assets
+Then check:
 
-Pre-generated visualization assets are already included in this repository:
-
-- `viewer/rumor_propagation.gif`
-- `viewer/state_messages.txt`
-- `viewer/data.csv`
-
-This means you can open the visualization immediately without rerunning the full simulation first.
-
----
-
-## Helper Scripts
-
-The repository includes helper scripts in `scripts/` for post-processing simulation outputs:
-
-- `scripts/convert_state_to_csv.py`
-- `scripts/make_messages_log.py`
-- `scripts/make_rumor_animation.py`
-- `scripts/run_rumor_default.sh`
-- `scripts/run_rumor_single_source.sh`
-- `scripts/run_rumor_three_sources.sh`
-- `scripts/run_rumor_large_grid.sh`
-
-These scripts are intended to process raw simulation logs, generate viewer assets, and run the main experimental configurations included in the repository.
-
-### Run Scripts
-
-From the repository root, the supported experiment scripts are:
-
-```bash
-./scripts/run_rumor_default.sh
-./scripts/run_rumor_single_source.sh
-./scripts/run_rumor_three_sources.sh
-./scripts/run_rumor_large_grid.sh
-```
-
-These scripts were verified against the current repository layout and run the following scenarios:
-
-- `run_rumor_default.sh` : default 30x30 rumor propagation setup
-- `run_rumor_single_source.sh` : 20x20 grid with one initial source
-- `run_rumor_three_sources.sh` : 20x20 grid with three initial sources
-- `run_rumor_large_grid.sh` : larger 30x30 scenario using the alternate configuration file
-
-Each script runs `bin/rumor_sim` with a different configuration file from `model/`.
-
----
-
-## Report and Video
-
-The final report is available at:
-
-- `report/Rumor_Propagation_CellDEVS_Final_Report.docx`
-
-The visualization video is available at:
-
-- `rumor_propagation_visualization.mp4`
-
----
-
-## Submission Note
-
-One manual submission item still needs to be checked before final delivery:
-
-- include the required `DEVSmodelsForm` file if it has not yet been added to the repository
-
----
-
-## Notes
-
-- The model uses local neighborhood interactions on a 2D grid.
-- Different rumor-spread scenarios can be tested by changing the JSON configuration.
-- The current restored viewer is based on the generated GIF asset, because that is the workflow confirmed to work reliably in this repository.
+ls logs
