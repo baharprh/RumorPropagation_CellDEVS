@@ -4,6 +4,9 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BIN_PATH="$ROOT_DIR/bin/rumor_sim"
 CONFIG_PATH="$ROOT_DIR/model/rumor_config_1.json"
+LOG_PATH="$ROOT_DIR/logs/single_source_run.log"
+
+mkdir -p "$ROOT_DIR/logs"
 
 if [[ ! -x "$BIN_PATH" ]]; then
   echo "Missing executable: $BIN_PATH"
@@ -13,4 +16,6 @@ if [[ ! -x "$BIN_PATH" ]]; then
 fi
 
 echo "Running single-source rumor propagation scenario..."
-"$BIN_PATH" "$CONFIG_PATH"
+"$BIN_PATH" "$CONFIG_PATH" | tee "$LOG_PATH"
+
+echo "Log saved to: $LOG_PATH"
