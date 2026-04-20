@@ -4,7 +4,7 @@ from pathlib import Path
 
 base_dir = Path(__file__).resolve().parent.parent
 input_file = base_dir / "logs" / "state.txt"
-output_file = base_dir / "viewer" / "data.csv"
+output_file = base_dir / "viewer" / "transitions.csv"
 
 time_pattern = re.compile(r"^\s*([0-9]+(?:\.[0-9]+)?)\s*$")
 state_pattern = re.compile(r"State for model .*_\((\d+),(\d+)\) is (\d+)")
@@ -22,7 +22,7 @@ with input_file.open("r", encoding="utf-8") as f:
 
         tmatch = time_pattern.match(line)
         if tmatch:
-            current_time = float(tmatch.group(1))
+            current_time = tmatch.group(1)
             continue
 
         smatch = state_pattern.search(line)
@@ -37,9 +37,7 @@ with input_file.open("r", encoding="utf-8") as f:
                 next_id += 1
 
             model_id = model_ids[model_name]
-
-            # Viewer-style row
-            rows.append([current_time, model_id, model_name, "", f"<{state}>"])
+            rows.append([current_time, model_id, model_name, "", state])
 
 output_file.parent.mkdir(parents=True, exist_ok=True)
 
