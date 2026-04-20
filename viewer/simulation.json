@@ -8,7 +8,9 @@
     "default": {
       "delay": "inertial",
       "cell_type": "rumor",
-      "state": 0,
+      "state": {
+        "state": 0
+      },
       "neighborhood": [
         {
           "type": "moore",
@@ -18,7 +20,9 @@
       ]
     },
     "infected": {
-      "state": 1,
+      "state": {
+        "state": 1
+      },
       "cell_map": [[7, 7], [15, 15], [22, 22]]
     }
   },
