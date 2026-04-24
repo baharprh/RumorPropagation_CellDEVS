@@ -1,5 +1,4 @@
 build/
-logs/
 viewer/*.log
 *.o
 *.out
