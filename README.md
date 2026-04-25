@@ -36,12 +36,14 @@ mkdir -p build
 cd build
 cmake ..
 cmake --build .
+
 cd ..
-
-Executable will be available at:
-
+```
+## Executable will be available at:
+After building, the executable will be available at:
 ./bin/rumor_sim
-Running the Simulation
+
+## Running the Simulation
 
 General command:
 
@@ -52,6 +54,7 @@ Example:
 ./bin/rumor_sim ./model/rumor_config.json 50
 Experiment Scripts
 
+## Experiment Scripts
 The following scripts are provided to execute different simulation scenarios:
 
 bash scripts/run_rumor_default.sh
@@ -62,21 +65,17 @@ bash scripts/run_rumor_large_grid.sh
 Each script runs the simulator with a different configuration:
 
 Script	Description
-run_rumor_default.sh	Default 30x30 scenario
-run_rumor_single_source.sh	Single initial infected cell
-run_rumor_three_sources.sh	Three initial infected cells
-run_rumor_large_grid.sh	Larger grid simulation
-Logs (Simulation Results)
+run_rumor_default.sh : Default 30x30 scenario
+run_rumor_single_source.sh : Single initial infected cell
+run_rumor_three_sources.sh : Three initial infected cells
+run_rumor_large_grid.sh : Larger grid simulation
+
+## Logs (Simulation Results)
 
 Simulation outputs are generated as CSV files inside the viewer/ directory.
 
-For each experiment, the file:
+For each experiment, the file viewer/grid_log.csv is copied into the logs/ directory to create preserved experiment logs:
 
-viewer/grid_log.csv
-
-is copied into the logs/ directory to create clear experiment logs:
-
-Log File	Description
 logs/default_run.log	Default scenario results
 logs/single_source_run.log	Single-source scenario
 logs/three_sources_run.log	Three-source scenario
@@ -84,12 +83,13 @@ logs/large_grid_run.log	Large-grid scenario
 
 Each log file contains the full state evolution of the grid over time.
 
-This satisfies the assignment requirement for:
+This ensures:
 
-execution logs
-reproducible experiments
-Configuration Files
+execution logs are preserved
+experiments are reproducible
+results can be independently verified
 
+## Configuration Files
 Located in model/:
 
 rumor_config.json (default)
@@ -102,27 +102,28 @@ Main parameters:
 scenario.shape : grid size
 scenario.wrapped : boundary condition
 cells.infected : initial rumor sources
-Cell States
+
+## Cell States
 0 → unaware
 1 → spreading rumor
 2 → inactive
-Visualization
 
+## Visualization
 Simulation results can be visualized using the provided viewer files.
-
 Relevant files:
-
 viewer/index.html
 viewer/simulation.json
 viewer/grid_log.csv
-Run Viewer
+
+Run local viewer:
 cd viewer
 python3 -m http.server 8080
 
-Open in browser:
+Then open in browser:
 
 http://127.0.0.1:8080/index.html
-Included Assets
+
+## Included Assets
 
 Pre-generated outputs are included:
 
@@ -132,15 +133,17 @@ viewer/state_messages.txt
 rumor_propagation_visualization.mp4
 Report and Video
 
+## Report and Video:
 Report:
-
 report/Rumor_Propagation_CellDEVS_Final_Report.docx
 
+DEVS Model Form:
+report/DEVSmodelsForm.doc
+
 Video:
-
 rumor_propagation_visualization.mp4
-Reproducibility
 
+## Reproducibility
 To fully reproduce results:
 
 bash scripts/run_rumor_default.sh
@@ -148,6 +151,5 @@ bash scripts/run_rumor_single_source.sh
 bash scripts/run_rumor_three_sources.sh
 bash scripts/run_rumor_large_grid.sh
 
-Then check:
-
+Then verify generated logs:
 ls logs
