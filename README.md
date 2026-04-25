@@ -109,19 +109,26 @@ cells.infected : initial rumor sources
 2 → inactive
 
 ## Visualization
-Simulation results can be visualized using the provided viewer files.
+Simulation results can be visualized using the provided local web-based viewer and generated animation assets.
+
 Relevant files:
+
 viewer/index.html
 viewer/simulation.json
-viewer/grid_log.csv
+viewer/transitions.csv
+viewer/rumor_propagation.gif
+viewer/state_messages.txt
 
 Run local viewer:
+
 cd viewer
 python3 -m http.server 8080
 
 Then open in browser:
 
 http://127.0.0.1:8080/index.html
+
+This page displays the generated rumor propagation GIF animation and also provides direct access to the corresponding CSV transition log and state message files.
 
 ## Included Assets
 
@@ -133,7 +140,7 @@ viewer/state_messages.txt
 rumor_propagation_visualization.mp4
 Report and Video
 
-## Report and Video:
+## ## Report, DEVS Form, and Visualization Media:
 Report:
 report/Rumor_Propagation_CellDEVS_Final_Report.docx
 
@@ -153,3 +160,4 @@ bash scripts/run_rumor_large_grid.sh
 
 Then verify generated logs:
 ls logs
+The generated visualization can then be inspected locally through the viewer/ web page or through the included animation media.
