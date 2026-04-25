@@ -5,6 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BIN_PATH="$ROOT_DIR/bin/rumor_sim"
 CONFIG_PATH="$ROOT_DIR/model/rumor_config_3sources.json"
 LOG_PATH="$ROOT_DIR/logs/three_sources_run.log"
+VIEWER_LOG="$ROOT_DIR/viewer/transitions.csv"
 
 mkdir -p "$ROOT_DIR/logs"
 
@@ -15,7 +16,13 @@ if [[ ! -x "$BIN_PATH" ]]; then
   exit 1
 fi
 
-echo "Running three-source rumor propagation scenario..."
-"$BIN_PATH" "$CONFIG_PATH" | tee "$LOG_PATH"
+echo "Running three-sources rumor propagation scenario..."
+"$BIN_PATH" "$CONFIG_PATH" 50
 
-echo "Log saved to: $LOG_PATH"
+if [[ -f "$VIEWER_LOG" ]]; then
+  cp "$VIEWER_LOG" "$LOG_PATH"
+  echo "Log saved to: $LOG_PATH"
+else
+  echo "Error: expected viewer log not found: $VIEWER_LOG"
+  exit 1
+fi
