@@ -41,18 +41,20 @@ cd ..
 ```
 ## Executable will be available at:
 After building, the executable will be available at:
-
+```bash
 ./bin/rumor_sim
-
+```
 ## Running the Simulation
 
 General command:
+```bash
 
 ./bin/rumor_sim ./model/rumor_config.json [MAX_TIME]
-
+```
 Example:
-
+```bash
 ./bin/rumor_sim ./model/rumor_config.json 50
+```
 Experiment Scripts
 
 ## Experiment Scripts
