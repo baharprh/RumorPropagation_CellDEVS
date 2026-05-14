@@ -48,11 +48,11 @@ After building, the executable will be available at:
 
 General command:
 
-`./bin/rumor_sim ./model/rumor_config.json [MAX_TIME]
+./bin/rumor_sim ./model/rumor_config.json [MAX_TIME]
 
 Example:
 
-`./bin/rumor_sim ./model/rumor_config.json 50
+./bin/rumor_sim ./model/rumor_config.json 50
 Experiment Scripts
 
 ## Experiment Scripts
