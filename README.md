@@ -83,10 +83,10 @@ Each script runs one experiment:
 
 ## Logs and Simulation Results
 
-The simulation produces output files that are preserved in the logs/ directory.
-After running the experiment scripts, the following log files should be created:
+The simulation produces output files that are preserved in the `logs/` directory.
 
-For each experiment, the file viewer/grid_log.csv is copied into the logs/ directory to create preserved experiment logs:
+For each experiment, the file `viewer/grid_log.csv` is copied into the `logs/` directory to create a preserved experiment log.
+
 After running the experiment scripts, the following log files are generated:
 
 | Log File | Description |
@@ -105,16 +105,16 @@ Each log file contains the state evolution of the grid over time and can be used
 ## Configuration Files
 The configuration files are located in the model/ directory:
 
-- ` rumor_config.json (default)`
-- ` rumor_config_1.json`
-- ` rumor_config_3sources.json`
-- ` rumor_config_large.json`
+- ` rumor_config.json` default scenario
+- ` rumor_config_1.json` single-source scenario
+- ` rumor_config_3sources.json` three-source scenario
+- ` rumor_config_large.json` large-grid scenario
 
 The main configuration parameters include:
 
-- ` scenario.shape : grid size`
-- ` scenario.wrapped : boundary condition`
-- ` cells.infected : initial rumor sources`
+- ` scenario.shape` : grid size
+- ` scenario.wrapped` : boundary condition
+- ` cells.infected` : initial rumor sources
 
 ## Cell States
 The model uses the following cell states:
@@ -142,8 +142,7 @@ cd viewer
 python3 -m http.server 8080
 ```
 Then open in browser:
-
-```bash
+```text
 http://127.0.0.1:8080/index.html
 ```
 This page displays the generated rumor propagation GIF animation and also provides direct access to the corresponding CSV transition log and state message files.
@@ -156,9 +155,8 @@ Pre-generated outputs are included:
 - `viewer/data.csv`
 - `viewer/state_messages.txt`
 - `rumor_propagation_visualization.mp4`
-- `Report and Video`
 
-## ## Report, DEVS Form, and Visualization Media:
+## ## Report, DEVS Form, and Visualization Media
 Report:
 report/Rumor_Propagation_CellDEVS_Final_Report.docx
 
