@@ -105,21 +105,25 @@ Each log file contains the state evolution of the grid over time and can be used
 ## Configuration Files
 The configuration files are located in the model/ directory:
 
--rumor_config.json (default)
--rumor_config_1.json
--rumor_config_3sources.json
--rumor_config_large.json
+- `rumor_config.json (default)
+- `rumor_config_1.json
+- `rumor_config_3sources.json
+- `rumor_config_large.json
 
 The main configuration parameters include:
 
--scenario.shape : grid size
--scenario.wrapped : boundary condition
--cells.infected : initial rumor sources
+- `scenario.shape : grid size
+- `scenario.wrapped : boundary condition
+- `cells.infected : initial rumor sources
 
 ## Cell States
-0 → unaware
-1 → spreading rumor
-2 → inactive
+The model uses the following cell states:
+
+| State Value | Cell Meaning |
+|---|---|
+| `0` | Unaware cell. The cell has not received the rumor yet. |
+| `1` | Spreading cell. The cell currently has the rumor and can spread it to neighboring cells. |
+| `2` | Inactive cell. The cell has already received the rumor but is no longer spreading it. |
 
 ## Visualization
 Simulation results can be visualized using the provided local web-based viewer and generated animation assets.
