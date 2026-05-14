@@ -39,7 +39,6 @@ cmake --build .
 
 cd ..
 ```
-## Executable will be available at:
 After building, the executable will be available at:
 ```bash
 ./bin/rumor_sim
