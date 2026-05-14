@@ -55,7 +55,6 @@ Example:
 ```bash
 ./bin/rumor_sim ./model/rumor_config.json 50
 ```
-Experiment Scripts
 
 ## Experiment Scripts
 The following scripts are provided to execute different simulation scenarios:
