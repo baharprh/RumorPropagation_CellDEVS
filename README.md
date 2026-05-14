@@ -43,6 +43,14 @@ After building, the executable will be available at:
 ```bash
 ./bin/rumor_sim
 ```
+To check that the executable was created, run:
+```bash
+ls bin
+```
+You should see:
+```bash
+rumor_sim
+```
 ## Running the Simulation
 
 General command:
@@ -65,11 +73,14 @@ bash scripts/run_rumor_large_grid.sh
 ```
 Each script runs the simulator with a different configuration:
 
-Script	Description
-run_rumor_default.sh : Default 30x30 scenario
-run_rumor_single_source.sh : Single initial infected cell
-run_rumor_three_sources.sh : Three initial infected cells
-run_rumor_large_grid.sh : Larger grid simulation
+Each script runs one experiment:
+
+| Command | Description |
+|---|---|
+| `bash scripts/run_rumor_default.sh` | Runs the default 30x30 rumor propagation scenario. |
+| `bash scripts/run_rumor_single_source.sh` | Runs the scenario with one initial infected cell. |
+| `bash scripts/run_rumor_three_sources.sh` | Runs the scenario with three initial infected cells. |
+| `bash scripts/run_rumor_large_grid.sh` | Runs the larger-grid rumor propagation scenario. |
 
 ## Logs (Simulation Results)
 
