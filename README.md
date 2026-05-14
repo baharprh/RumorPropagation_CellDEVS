@@ -1,4 +1,4 @@
-# Rumor Propagation using Cell-DEVS (Cadmium)
+ # Rumor Propagation using Cell-DEVS (Cadmium)
 
 ## Overview
 
@@ -41,17 +41,17 @@ cd ..
 ```
 ## Executable will be available at:
 After building, the executable will be available at:
-./bin/rumor_sim
+`./bin/rumor_sim
 
 ## Running the Simulation
 
 General command:
 
-./bin/rumor_sim ./model/rumor_config.json [MAX_TIME]
+`./bin/rumor_sim ./model/rumor_config.json [MAX_TIME]
 
 Example:
 
-./bin/rumor_sim ./model/rumor_config.json 50
+`./bin/rumor_sim ./model/rumor_config.json 50
 Experiment Scripts
 
 ## Experiment Scripts
