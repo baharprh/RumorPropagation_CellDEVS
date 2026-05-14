@@ -105,16 +105,16 @@ Each log file contains the state evolution of the grid over time and can be used
 ## Configuration Files
 The configuration files are located in the model/ directory:
 
-- ` rumor_config.json (default)
-- ` rumor_config_1.json
-- ` rumor_config_3sources.json
-- ` rumor_config_large.json
+- ` rumor_config.json (default)`
+- ` rumor_config_1.json`
+- ` rumor_config_3sources.json`
+- ` rumor_config_large.json`
 
 The main configuration parameters include:
 
-- ` scenario.shape : grid size
-- ` scenario.wrapped : boundary condition
-- ` cells.infected : initial rumor sources
+- ` scenario.shape : grid size`
+- ` scenario.wrapped : boundary condition`
+- ` cells.infected : initial rumor sources`
 
 ## Cell States
 The model uses the following cell states:
@@ -152,11 +152,11 @@ This page displays the generated rumor propagation GIF animation and also provid
 
 Pre-generated outputs are included:
 
-- `viewer/grid_log.csv
-- `viewer/data.csv
-- `viewer/state_messages.txt
-- `rumor_propagation_visualization.mp4
-- `Report and Video
+- `viewer/grid_log.csv`
+- `viewer/data.csv`
+- `viewer/state_messages.txt`
+- `rumor_propagation_visualization.mp4`
+- `Report and Video`
 
 ## ## Report, DEVS Form, and Visualization Media:
 Report:
@@ -170,12 +170,17 @@ rumor_propagation_visualization.mp4
 
 ## Reproducibility
 To fully reproduce results:
-
-- `bash scripts/run_rumor_default.sh
-- `bash scripts/run_rumor_single_source.sh
-- `bash scripts/run_rumor_three_sources.sh
-- `bash scripts/run_rumor_large_grid.sh
+```bash
+bash scripts/run_rumor_default.sh
+bash scripts/run_rumor_single_source.sh
+bash scripts/run_rumor_three_sources.sh
+bash scripts/run_rumor_large_grid.sh
+```
 
 Then verify generated logs:
+
+```bash
 ls logs
+```
+
 The generated visualization can then be inspected locally through the viewer/ web page or through the included animation media.
