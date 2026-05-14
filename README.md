@@ -71,7 +71,6 @@ bash scripts/run_rumor_single_source.sh
 bash scripts/run_rumor_three_sources.sh
 bash scripts/run_rumor_large_grid.sh
 ```
-Each script runs the simulator with a different configuration:
 
 Each script runs one experiment:
 
@@ -82,24 +81,26 @@ Each script runs one experiment:
 | `bash scripts/run_rumor_three_sources.sh` | Runs the scenario with three initial infected cells. |
 | `bash scripts/run_rumor_large_grid.sh` | Runs the larger-grid rumor propagation scenario. |
 
-## Logs (Simulation Results)
+## Logs and Simulation Results
 
-Simulation outputs are generated as CSV files inside the viewer/ directory.
+The simulation produces output files that are preserved in the logs/ directory.
+After running the experiment scripts, the following log files should be created:
 
 For each experiment, the file viewer/grid_log.csv is copied into the logs/ directory to create preserved experiment logs:
+After running the experiment scripts, the following log files are generated:
 
-logs/default_run.log	Default scenario results
-logs/single_source_run.log	Single-source scenario
-logs/three_sources_run.log	Three-source scenario
-logs/large_grid_run.log	Large-grid scenario
+| Log File | Description |
+|---|---|
+| `logs/default_run.log` | Contains the results of the default 30x30 rumor propagation scenario. |
+| `logs/single_source_run.log` | Contains the results of the scenario with one initial infected cell. |
+| `logs/three_sources_run.log` | Contains the results of the scenario with three initial infected cells. |
+| `logs/large_grid_run.log` | Contains the results of the larger-grid rumor propagation scenario. |
 
-Each log file contains the full state evolution of the grid over time.
-
-This ensures:
-
-execution logs are preserved
-experiments are reproducible
-results can be independently verified
+To verify the generated logs, run:
+```bash
+ls logs
+```
+Each log file contains the state evolution of the grid over time and can be used to verify the simulation results.
 
 ## Configuration Files
 Located in model/:
