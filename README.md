@@ -58,12 +58,12 @@ Example:
 
 ## Experiment Scripts
 The following scripts are provided to execute different simulation scenarios:
-
+```bash
 bash scripts/run_rumor_default.sh
 bash scripts/run_rumor_single_source.sh
 bash scripts/run_rumor_three_sources.sh
 bash scripts/run_rumor_large_grid.sh
-
+```
 Each script runs the simulator with a different configuration:
 
 Script	Description
