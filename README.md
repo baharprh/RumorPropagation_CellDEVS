@@ -105,16 +105,16 @@ Each log file contains the state evolution of the grid over time and can be used
 ## Configuration Files
 The configuration files are located in the model/ directory:
 
-- `rumor_config.json (default)
-- `rumor_config_1.json
-- `rumor_config_3sources.json
-- `rumor_config_large.json
+- ` rumor_config.json (default)
+- ` rumor_config_1.json
+- ` rumor_config_3sources.json
+- ` rumor_config_large.json
 
 The main configuration parameters include:
 
-- `scenario.shape : grid size
-- `scenario.wrapped : boundary condition
-- `cells.infected : initial rumor sources
+- ` scenario.shape : grid size
+- ` scenario.wrapped : boundary condition
+- ` cells.infected : initial rumor sources
 
 ## Cell States
 The model uses the following cell states:
@@ -130,32 +130,33 @@ Simulation results can be visualized using the provided local web-based viewer a
 
 Relevant files:
 
-viewer/index.html
-viewer/simulation.json
-viewer/transitions.csv
-viewer/rumor_propagation.gif
-viewer/state_messages.txt
+- `viewer/index.html` is the local web page used to display the rumor propagation visualization.
+- `viewer/simulation.json` contains the viewer configuration settings.
+- `viewer/transitions.csv` contains the transition data used by the viewer.
+- `viewer/rumor_propagation.gif` is the generated animation of the rumor propagation process.
+- `viewer/state_messages.txt` contains the state messages generated during the simulation.
 
 Run local viewer:
-
+```bash
 cd viewer
 python3 -m http.server 8080
-
+```
 Then open in browser:
 
+```bash
 http://127.0.0.1:8080/index.html
-
+```
 This page displays the generated rumor propagation GIF animation and also provides direct access to the corresponding CSV transition log and state message files.
 
 ## Included Assets
 
 Pre-generated outputs are included:
 
-viewer/grid_log.csv
-viewer/data.csv
-viewer/state_messages.txt
-rumor_propagation_visualization.mp4
-Report and Video
+- `viewer/grid_log.csv
+- `viewer/data.csv
+- `viewer/state_messages.txt
+- `rumor_propagation_visualization.mp4
+- `Report and Video
 
 ## ## Report, DEVS Form, and Visualization Media:
 Report:
@@ -170,10 +171,10 @@ rumor_propagation_visualization.mp4
 ## Reproducibility
 To fully reproduce results:
 
-bash scripts/run_rumor_default.sh
-bash scripts/run_rumor_single_source.sh
-bash scripts/run_rumor_three_sources.sh
-bash scripts/run_rumor_large_grid.sh
+- `bash scripts/run_rumor_default.sh
+- `bash scripts/run_rumor_single_source.sh
+- `bash scripts/run_rumor_three_sources.sh
+- `bash scripts/run_rumor_large_grid.sh
 
 Then verify generated logs:
 ls logs
