@@ -103,18 +103,18 @@ ls logs
 Each log file contains the state evolution of the grid over time and can be used to verify the simulation results.
 
 ## Configuration Files
-Located in model/:
+The configuration files are located in the model/ directory:
 
-rumor_config.json (default)
-rumor_config_1.json
-rumor_config_3sources.json
-rumor_config_large.json
+-rumor_config.json (default)
+-rumor_config_1.json
+-rumor_config_3sources.json
+-rumor_config_large.json
 
-Main parameters:
+The main configuration parameters include:
 
-scenario.shape : grid size
-scenario.wrapped : boundary condition
-cells.infected : initial rumor sources
+-scenario.shape : grid size
+-scenario.wrapped : boundary condition
+-cells.infected : initial rumor sources
 
 ## Cell States
 0 → unaware
