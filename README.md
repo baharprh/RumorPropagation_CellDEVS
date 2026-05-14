@@ -41,9 +41,9 @@ cd ..
 ```
 ## Executable will be available at:
 After building, the executable will be available at:
----
+
 ./bin/rumor_sim
----
+
 ## Running the Simulation
 
 General command:
